@@ -1,35 +1,55 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  TextInput,
+} from "react-native";
+import { Link } from "expo-router";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Hello Captain, Chingsan</Text>
-      <TouchableOpacity style={styles.button1}>
-        <Text>Touch me</Text>
-      </TouchableOpacity>
-      <StatusBar style="auto" />
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.textInput}
+          placeholder="What is your goal?"
+        ></TextInput>
+        <TouchableOpacity style={styles.button1}>
+          <Text style={styles.textButton}>Add</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    paddingTop: 50,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+  },
+  inputContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
   },
   header: {
     fontSize: 24,
     color: "#006A71",
+    paddingBottom: 10,
+  },
+  textInput: {
+    fontSize: 18,
+    backgroundColor: "#EBE8DB",
+    padding: 10,
+    borderRadius: 10,
   },
   button1: {
-    paddingTop: 10,
-    paddingBottom: 10,
-    paddingLeft: 5,
-    paddingRight: 5,
+    padding: 10,
     borderRadius: 10,
-    backgroundColor: "#FED2E2",
+    backgroundColor: "#C1CFA1",
+  },
+  textButton: {
+    fontSize: 18,
   },
 });
