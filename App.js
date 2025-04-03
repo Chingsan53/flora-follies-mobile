@@ -5,10 +5,12 @@ import {
   View,
   TouchableOpacity,
   TextInput,
+  Button,
 } from "react-native";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 
 export default function App() {
+  const router = useRouter();
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
@@ -16,9 +18,6 @@ export default function App() {
           style={styles.textInput}
           placeholder="What is your goal?"
         ></TextInput>
-        <TouchableOpacity style={styles.button1}>
-          <Text style={styles.textButton}>Add</Text>
-        </TouchableOpacity>
       </View>
     </View>
   );
