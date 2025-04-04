@@ -16,8 +16,10 @@ export default function App() {
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.textInput}
-          placeholder="What is your goal?"
+          placeholder="What is your name?"
         ></TextInput>
+        <Text style={styles.header}>Daily 3</Text>
+        <Text style={styles.header}>083, 830, 308</Text>
       </View>
     </View>
   );
@@ -25,17 +27,19 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 50,
+    paddingTop: 80,
     backgroundColor: "#fff",
   },
   inputContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   },
   header: {
     fontSize: 24,
     color: "#006A71",
     paddingBottom: 10,
+    paddingTop: 10,
   },
   textInput: {
     fontSize: 18,
