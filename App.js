@@ -6,20 +6,41 @@ import {
   TouchableOpacity,
   TextInput,
   Button,
+  ScrollView,
 } from "react-native";
 import { Link, useRouter } from "expo-router";
+import { useState } from "react";
 
 export default function App() {
   const router = useRouter();
+  const [enteredGoalText, setEnteredGoalText] = useState("");
+  const [courseGoals, setCourseGoals] = useState([]);
+  const goalInputHandler = (enteredText) => {
+    setEnteredGoalText(enteredText);
+  };
+
+  const addGoalHandler = () => {
+    setCourseGoals((currentCourseGoals) => [...courseGoals, enteredGoalText]);
+  };
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.textInput}
-          placeholder="What is your name?"
+          placeholder="Your course goal"
+          onChangeText={goalInputHandler}
         ></TextInput>
-        <Text style={styles.header}>Daily 3</Text>
-        <Text style={styles.header}>083, 830, 308</Text>
+        <Button title="Add Goal" onPress={addGoalHandler} />
+      </View>
+      <View style={styles.goalsContainer}>
+        <ScrollView>
+          {/* <Text>{courseGoals} </Text> */}
+          {courseGoals.map((goal) => (
+            <Text key={goal} style={styles.listItems}>
+              {goal}
+            </Text>
+          ))}
+        </ScrollView>
       </View>
     </View>
   );
@@ -27,13 +48,18 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 80,
-    backgroundColor: "#fff",
+    flex: 1,
+    paddingTop: 50,
+    paddingHorizontal: 16,
   },
   inputContainer: {
-    flexDirection: "column",
+    flex: 1,
+    flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+    marginBottom: 24,
+    borderBottomWidth: 1,
+    borderBottomColor: "#cccccc",
   },
   header: {
     fontSize: 24,
@@ -43,8 +69,12 @@ const styles = StyleSheet.create({
   },
   textInput: {
     fontSize: 18,
+    borderWidth: 1,
+    borderColor: "#cccccc",
     backgroundColor: "#EBE8DB",
-    padding: 10,
+    width: "70%",
+    marginRight: 8,
+    padding: 8,
     borderRadius: 10,
   },
   button1: {
@@ -54,5 +84,19 @@ const styles = StyleSheet.create({
   },
   textButton: {
     fontSize: 18,
+  },
+  goalsContainer: {
+    flex: 6,
+    flexDirection: "column",
+  },
+  listItems: {
+    fontSize: 18,
+    borderWidth: 1,
+    borderColor: "#cccccc",
+    padding: 10,
+    margin: 5,
+    borderRadius: 10,
+    backgroundColor: "#9ACBD0",
+    flexDirection: "column",
   },
 });
