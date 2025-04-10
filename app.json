@@ -13,7 +13,8 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.example.flora-follies-mobile"
     },
     "android": {
       "adaptiveIcon": {
@@ -23,6 +24,16 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(flora-follies-mobile) to access your camera",
+          "microphonePermission": "Allow $(flora-follies-mobile) to access your microphone",
+          "recordAudioAndroid": true
+        }
+      ]
+    ]
   }
 }
